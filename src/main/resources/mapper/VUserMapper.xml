@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cg.mapper.VUserMapper">
+
+    <resultMap id="BaseResultMap" type="com.cg.entity.view.VUser">
+            <result property="id" column="id" jdbcType="BIGINT"/>
+            <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="account" column="account" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="roleId" column="role_id" jdbcType="BIGINT"/>
+            <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
+            <result property="roleValue" column="role_value" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,mobile,name,
+        account,password,role_id,
+        role_name,role_value
+    </sql>
+</mapper>

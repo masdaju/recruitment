@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cg.mapper.ResumeInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cg.entity.ResumeInfo">
+        <id column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="status" property="status" />
+        <result column="name" property="name" />
+        <result column="brief" property="brief" />
+        <result column="user_id" property="userId" />
+        <result column="file_id" property="fileId" />
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, update_time, status, name, brief, user_id, file_id
+    </sql>
+    <select id="getpage" resultType="com.cg.entity.ResumeInfo">
+        select ri.*,f.file_url,u.name AS username from resume_info ri left join sys_user u
+            on ri.user_id = u.id
+            left join sys_file f
+            on ri.file_id=f.id
+            where ri.user_id = #{userId}
+        order by ri.create_time desc
+    </select>
+
+</mapper>
